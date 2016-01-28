@@ -1,6 +1,6 @@
 class TransactionParser:
 
-  ROW_ORDER = ['date', 'name', 'role', 'action', 'amount', 'symbol', 'sum']
+  ROW_ORDER = ['date', 'name', 'role', 'action', 'amount', 'symbol', 'sum', 'dragspel']
 
   @staticmethod
   def from_row(row):
@@ -13,3 +13,8 @@ class TransactionParser:
   @staticmethod
   def extract_name(cell):
     return cell.a.string.strip()
+
+  @staticmethod
+  def is_transaction_row(row):
+    num_cells = len([cell for cell in row.children if cell.name == 'td'])
+    return num_cells == len(TransactionParser.ROW_ORDER)
