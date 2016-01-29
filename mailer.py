@@ -2,11 +2,15 @@ from marrow.mailer import Mailer as MarrowMailer
 from message import Message
 
 import sys
+import os
+import pwd
+import socket
 
 
 class Mailer:
 
   MAILER = MarrowMailer(dict(manager=dict(use='immediate'), transport=dict(use='sendmail')))
+  DEFAULT_AUTHOR = pwd.getpwuid(os.getuid()).pw_name + '@' + socket.getfqdn()
 
   @staticmethod
   def send(message):
@@ -25,6 +29,7 @@ class Mailer:
     Mailer.start()
 
     message = Message(
+        author=Mailer.DEFAULT_AUTHOR,
         to=to_addr,
         subject='New transactions',
         plain=repr(transactions)
