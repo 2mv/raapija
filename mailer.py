@@ -1,5 +1,5 @@
 from marrow.mailer import Mailer as MarrowMailer
-from marrow.mailer import Message
+from message import Message
 
 import sys
 
