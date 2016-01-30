@@ -1,7 +1,7 @@
 beautifulsoup4==4.4.1
 html5lib==0.9999999
 marrow.interface==1.0.1
-marrow.mailer==4.0.0
+git+https://github.com/marrow/marrow.mailer.git@6ba41a4de60317c7c2fed5d1b63430f0a79d2278#egg=marrow.mailer
 marrow.util==1.2.3
 MechanicalSoup==0.4.0
 requests==2.9.1
