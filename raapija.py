@@ -14,7 +14,7 @@ if last_transactions is None:
 else:
   new_transactions = list(itertools.filterfalse(lambda x: x in last_transactions, transactions))
   if len(new_transactions) > 0:
-    print("New transactions: " + repr(new_transactions))
+    print(str("New transactions: " + repr(new_transactions)).encode(sys.stdout.encoding, 'replace'))
     if to_addr is not None:
       Mailer.send_transactions(new_transactions, to_addr)
   else:
