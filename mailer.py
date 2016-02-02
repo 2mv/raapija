@@ -32,7 +32,7 @@ class Mailer:
         author=Mailer.DEFAULT_AUTHOR,
         to=to_addr,
         subject='New transactions',
-        plain=repr(transactions)
+        plain=Mailer.get_new_transactions_str(transactions)
     )
     Mailer.send(message)
 
@@ -44,3 +44,9 @@ class Mailer:
       return sys.argv[1]
     except IndexError:
       return None
+
+  @staticmethod
+  def get_new_transactions_str(transactions):
+    message_str = "New transactions:\n"
+    message_str += "\n".join([str(tr) for tr in transactions])
+    return message_str

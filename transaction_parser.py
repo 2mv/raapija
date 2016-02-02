@@ -1,3 +1,6 @@
+from transaction import Transaction
+
+
 class TransactionParser:
 
   ROW_ORDER = ['date', 'name', 'role', 'action', 'amount', 'symbol', 'sum', 'dragspel']
@@ -8,7 +11,7 @@ class TransactionParser:
     cells_dict = dict(zip(TransactionParser.ROW_ORDER, cells))
     transaction_dict = {key: str(value.string).strip() for key, value in cells_dict.items()}
     transaction_dict['name'] = TransactionParser.extract_name(cells_dict['name'])
-    return transaction_dict
+    return Transaction(**transaction_dict)
 
   @staticmethod
   def extract_name(cell):
